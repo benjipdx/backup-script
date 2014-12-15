@@ -79,4 +79,9 @@ fi
 
 cp $BACKUP_DIR/$TARFILE $BACKUP_DRIVE_DIR/$TARFILE
 
+if [ $? = "0" ]; then
+  rm $BACKUP_DIR/$TARFILE
+fi
+
+
 echo "Successfully created a backup archive in $BACKUP_DRIVE_DIR/$TARFILE"
