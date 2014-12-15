@@ -11,8 +11,11 @@ crontab -e
 
 And then insert the following:
 
-`* */12 * * * /root/path/to/backup.sh >/dev/null 2>&1`
+```
+* 2 * * * /root/bin/backup.bash > /var/log/backup.log 2>&1
+* 4 2 * * /root/bin/prune.sh > /dev/null 2>&1
+```
 
-which will run the script every 12 hours
+which will run the script daily at 2am, and the prune script at 4am on the second of the month
 
 
