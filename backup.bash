@@ -31,7 +31,7 @@ else
   done
 fi
 
-if [ ! $EXCLUDE_DIRS ]; then
+if [ ! -d $EXCLUDE_DIRS ]; then
   echo "No Directories to exclude, continuing..."
   
 else
@@ -69,7 +69,7 @@ done
 #archive
 
 #if there aren't any excluded directories
-if [ ! $EXCLUDE_DIRS ]; then
+if [ ! -d $EXCLUDE_DIRS ]; then
   tar -pczf $BACKUP_DIR/$TARFILE $INCLUDE_DIRS
 else
   tar -pczf $BACKUP_DIR/$TARFILE $INCLUDE_DIRS --exclude $EXCLUDE_DIRS
