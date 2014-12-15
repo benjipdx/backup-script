@@ -16,7 +16,7 @@ if [ "$UID" -ne "0" ]; then
   echo "You should probably run this as root if you're accessing system directories"
 fi
 
-if [ ! $INCLUDE_DIRS ]; then
+if [ -e "$INCLUDE_DIRS" ]; then
   echo "No Directories to include, exiting"
   exit 1
 else
@@ -31,7 +31,7 @@ else
   done
 fi
 
-if [ ! -d $EXCLUDE_DIRS ]; then
+if [ -e "$EXCLUDE_DIRS" ]; then
   echo "No Directories to exclude, continuing..."
   
 else
@@ -47,7 +47,7 @@ else
 fi
 
 #make sure backup_dr and backup_drive_dir exist
-if [ ! -d $BACKUP_DIR ]; then
+if [ -e "$BACKUP_DIR" ]; then
   mkdir -p $BACKUP_DIR
   echo "Made backup directory..."
 fi
@@ -69,7 +69,7 @@ done
 #archive
 
 #if there aren't any excluded directories
-if [ ! -d $EXCLUDE_DIRS ]; then
+if [ -e "$EXCLUDE_DIRS"" ]; then
   tar -pczf $BACKUP_DIR/$TARFILE $INCLUDE_DIRS
 else
   tar -pczf $BACKUP_DIR/$TARFILE $INCLUDE_DIRS --exclude $EXCLUDE_DIRS
